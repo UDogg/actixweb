@@ -4,8 +4,8 @@ use strum_macros::{EnumString, Display};
 
 #[derive(Debug, Serialize, EnumString, Display, Eq, PartialEq)]
 pub enum TaskState {
-    Pending,
-    Running,
+    NotStarted,
+    InProgress,
     Completed,
     Paused,
     Failed
@@ -23,7 +23,7 @@ pub struct Task {
     pub description: String,
 }
 
-impl Task{
+impl Task {
     pub fn new(
         user_uuid: String,
         task_type: String,
@@ -42,7 +42,7 @@ impl Task{
             description,
         }
     }
-}
+
     pub fn get_global_id(&self) -> String {
         format!("{}-{}", self.user_uuid, self.task_uuid)
     }
@@ -50,3 +50,4 @@ impl Task{
     pub fn can_transition_to(&self, state: &TaskState) -> bool {
         self.state != *state
     }
+}
