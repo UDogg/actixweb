@@ -29,4 +29,4 @@ COPY --from=builder /app/target/release/your_app_name .
 EXPOSE 8080
 
 # Set the command to run your application when the container starts
-CMD ["./your_app_name"]
+CMD ["./actixweb"]
